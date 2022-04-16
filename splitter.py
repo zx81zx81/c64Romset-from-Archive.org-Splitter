@@ -4,12 +4,14 @@ import os
 from shutil import move
 
 wd = os.getcwd()
-dirs = os.listdir(wd)
+dirs = sorted(os.listdir(wd))
 lastitemindex = len(dirs) - 1
 
 
-drive = wd.split(':')[0]
-results = ':\\c64Romset_output\\'
+#drive = wd.split(':')[0]
+#results = ':\\c64Romset_output\\'
+drive = '.'
+results = '/c64Romset_output/'
 filesperfolder = 255
 letterstodisplay = 15
 
@@ -42,7 +44,7 @@ for folder in dirs:
             target = newdir
             counter = 0
     newfname = folder.split("(")[0].strip()
-    move(folder, drive + results + target + "\\" + newfname)
+    move(folder, drive + results + target + "/" + newfname)
     print("Moved " + folder + " to " + drive + results + target + " as " + newfname)
     log_output.write("\n" + "Moved " + folder + " to: ** " + target + " **" + " as " + newfname)
     counter += 1
